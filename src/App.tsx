@@ -21,24 +21,9 @@ function App() {
       <Grid container spacing={5} sx={{ padding: "30px" }}>
         {listOfProducts.map((product: ProductInformation) => (
           <Grid item xs={3}>
-            <ProductCard name = {product.name} price = {product.price} />
+            <ProductCard name={product.name} price={product.price} />
           </Grid>
         ))}
-        {/* <Grid item xs={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={3}>
-          <ProductCard />
-        </Grid>
-        <Grid item xs={3}>
-          <ProductCard />
-        </Grid> */}
       </Grid>
     </div>
   );
