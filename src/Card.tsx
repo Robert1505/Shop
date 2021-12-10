@@ -5,8 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { ProductInformation } from "./App";
 
-export default function ProductCard() {
+export default function ProductCard(props: ProductInformation) {
   return (
     <Card>
       <CardMedia
@@ -31,7 +32,7 @@ export default function ProductCard() {
           fontWeight="700"
           sx={{ margin: 0 }}
         >
-          iPhone 13
+          {props.name}
         </Typography>
         <Typography
           variant="body2"
@@ -39,7 +40,7 @@ export default function ProductCard() {
           fontFamily="Poppins"
           fontWeight="400"
         >
-          10$
+          ${props.price}
         </Typography>
       </CardContent>
       <CardActions>
