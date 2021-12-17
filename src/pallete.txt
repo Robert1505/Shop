@@ -1,0 +1,10 @@
+Purple: #7400B8
+French Violet: #6930C3
+State Blue: #5E60CE
+Tufts Blue: #5390D9
+Blue Jeans: #4EA8DE
+Vivid Sky Blue: #48BFE3
+Sky Blue Crayola: #56CFE1
+Medium Turquoise: #64DFDF
+Turquoise: #72EFDD
+Aquamarine: #80FFDB
