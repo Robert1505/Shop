@@ -7,7 +7,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Typography } from "@mui/material";
 
-export default function Header() {
+type Props = {
+  favouriteBadgeCount: number;
+}
+
+export default function Header(props: Props) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -33,7 +37,7 @@ export default function Header() {
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color = "error">
+              <Badge badgeContent={props.favouriteBadgeCount} color = "error">
                 <FavoriteIcon />
               </Badge>
             </IconButton>

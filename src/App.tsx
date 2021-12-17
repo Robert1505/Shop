@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./Header";
 import ProductCard from "./Card";
@@ -18,13 +18,38 @@ function App() {
     { name: "Smart TV", price: 850 },
   ];
 
+  const [favouriteProducts, setFavouriteProducts] = useState<
+    ProductInformation[]
+  >([]);
+
   return (
     <div className="App">
-      <Header />
+      <Header favouriteBadgeCount={favouriteProducts.length} />
       <Grid container spacing={5} sx={{ padding: "30px" }}>
         {listOfProducts.map((product: ProductInformation) => (
           <Grid item xs={3}>
-            <ProductCard name={product.name} price={product.price} />
+            <ProductCard
+              name={product.name}
+              price={product.price}
+              onFavoriteClick={() => {
+                let copy = [...favouriteProducts];
+
+                // Find if the product is already on the favorite list
+                const productIndex = favouriteProducts.findIndex(
+                  (p) => p.name === product.name
+                );
+
+                // productIndex will be equal to -1 if the product doesn't exist, otherwise it exists
+                if(productIndex === -1){
+                  copy.push(product);
+                }
+                else{
+                  copy.splice(productIndex,1);
+                }
+
+                setFavouriteProducts(copy);
+              }}
+            />
           </Grid>
         ))}
       </Grid>

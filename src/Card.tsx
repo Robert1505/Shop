@@ -10,7 +10,13 @@ import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 
-export default function ProductCard(props: ProductInformation) {
+type Props = {
+  name: string;
+  price: number;
+  onFavoriteClick: () => void;
+};
+
+export default function ProductCard(props: Props) {
   const [isFavourite, setIsFavourite] = useState(false);
 
   return (
@@ -62,7 +68,10 @@ export default function ProductCard(props: ProductInformation) {
         >
           Add To Cart
         </Button>
-        <IconButton size="large" onClick={() => setIsFavourite(!isFavourite)}>
+        <IconButton size="large" onClick={() => {
+          props.onFavoriteClick();
+          setIsFavourite(!isFavourite)
+          }}>
           <FavoriteIcon color={isFavourite ? "error" : "disabled"} />
         </IconButton>
       </CardActions>
