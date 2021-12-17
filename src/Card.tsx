@@ -6,8 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { ProductInformation } from "./App";
+import { IconButton } from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useState } from "react";
 
 export default function ProductCard(props: ProductInformation) {
+  const [isFavourite, setIsFavourite] = useState(false);
+
   return (
     <Card>
       <CardMedia
@@ -21,7 +26,7 @@ export default function ProductCard(props: ProductInformation) {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "16px 8px 0px 12px"
+          padding: "16px 8px 0px 12px",
         }}
       >
         <Typography
@@ -36,16 +41,30 @@ export default function ProductCard(props: ProductInformation) {
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
+          color="#6930C3"
           fontFamily="Poppins"
-          fontWeight="400"
+          fontWeight="700"
         >
           ${props.price}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Favourite</Button>
-        <Button size="small">Add To Cart</Button>
+        <Button
+          size="small"
+          sx={{
+            padding: "8px 16px",
+            color: "white",
+            background:
+              "rgb(83,144,217) linear-gradient(90deg, rgba(83,144,217,1) 0%, rgba(78,168,222,1) 50%, rgba(72,191,227,1) 100%)",
+            fontFamily: "Poppins",
+            fontWeight: 700,
+          }}
+        >
+          Add To Cart
+        </Button>
+        <IconButton size="large" onClick={() => setIsFavourite(!isFavourite)}>
+          <FavoriteIcon color={isFavourite ? "error" : "disabled"} />
+        </IconButton>
       </CardActions>
     </Card>
   );

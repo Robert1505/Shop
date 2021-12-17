@@ -13,6 +13,9 @@ function App() {
   const listOfProducts: ProductInformation[] = [
     { name: "iPhone 13", price: 1000 },
     { name: "iPhone 12", price: 850 },
+    { name: "iPhone 11", price: 650 },
+    { name: "Pampers", price: 10 },
+    { name: "Smart TV", price: 850 },
   ];
 
   return (
