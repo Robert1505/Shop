@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Header from "./Header";
 import ProductCard from "./Card";
-import { Grid } from "@mui/material";
+import { Grid, Input } from "@mui/material";
 
 export type ProductInformation = {
   name: string;
@@ -27,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header favouriteBadgeCount={favouriteProducts.length} cartBadgeCount={cartProducts.length} />
+      <Input placeholder="Search" />
       <Grid container spacing={5} sx={{ padding: "30px" }}>
         {listOfProducts.map((product: ProductInformation) => (
           <Grid item xs={3}>
