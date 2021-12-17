@@ -22,15 +22,22 @@ function App() {
     ProductInformation[]
   >([]);
 
+  const [cartProducts, setCartProducts] = useState<ProductInformation[]>([]);
+
   return (
     <div className="App">
-      <Header favouriteBadgeCount={favouriteProducts.length} />
+      <Header favouriteBadgeCount={favouriteProducts.length} cartBadgeCount={cartProducts.length} />
       <Grid container spacing={5} sx={{ padding: "30px" }}>
         {listOfProducts.map((product: ProductInformation) => (
           <Grid item xs={3}>
             <ProductCard
               name={product.name}
               price={product.price}
+              onAddToCartClick={() => {
+                let copy = [...cartProducts];
+                copy.push(product);
+                setCartProducts(copy);
+              }}
               onFavoriteClick={() => {
                 let copy = [...favouriteProducts];
 
