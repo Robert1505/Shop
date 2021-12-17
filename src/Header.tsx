@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 
 type Props = {
   favouriteBadgeCount: number;
+  cartBadgeCount: number;
 }
 
 export default function Header(props: Props) {
@@ -46,7 +47,7 @@ export default function Header(props: Props) {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={2} color="error">
+              <Badge badgeContent={props.cartBadgeCount} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>

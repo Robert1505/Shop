@@ -14,6 +14,7 @@ type Props = {
   name: string;
   price: number;
   onFavoriteClick: () => void;
+  onAddToCartClick: () => void;
 };
 
 export default function ProductCard(props: Props) {
@@ -65,13 +66,17 @@ export default function ProductCard(props: Props) {
             fontFamily: "Poppins",
             fontWeight: 700,
           }}
+          onClick={props.onAddToCartClick}
         >
           Add To Cart
         </Button>
-        <IconButton size="large" onClick={() => {
-          props.onFavoriteClick();
-          setIsFavourite(!isFavourite)
-          }}>
+        <IconButton
+          size="large"
+          onClick={() => {
+            props.onFavoriteClick();
+            setIsFavourite(!isFavourite);
+          }}
+        >
           <FavoriteIcon color={isFavourite ? "error" : "disabled"} />
         </IconButton>
       </CardActions>
