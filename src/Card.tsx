@@ -13,6 +13,7 @@ import { useState } from "react";
 type Props = {
   name: string;
   price: number;
+  image: string;
   onFavoriteClick: () => void;
   onAddToCartClick: () => void;
 };
@@ -25,8 +26,11 @@ export default function ProductCard(props: Props) {
       <CardMedia
         component="img"
         height="210"
-        image="https://picsum.photos/536/354"
+        image= {props.image}
         alt="random pic"
+        sx={{
+          objectFit: "contain"
+        }}
       />
       <CardContent
         sx={{
