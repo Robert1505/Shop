@@ -6,13 +6,17 @@ import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Typography } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   favouriteBadgeCount: number;
   cartBadgeCount: number;
-}
+};
 
 export default function Header(props: Props) {
+
+  const navigate = useNavigate();
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -22,11 +26,11 @@ export default function Header(props: Props) {
         }}
       >
         <Toolbar>
-        <Typography
+          <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
             fontFamily={"BakBak One"}
           >
             ReactShop
@@ -37,8 +41,9 @@ export default function Header(props: Props) {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              onClick = {() => {navigate('/favourites')}}
             >
-              <Badge badgeContent={props.favouriteBadgeCount} color = "error">
+              <Badge badgeContent={props.favouriteBadgeCount} color="error">
                 <FavoriteIcon />
               </Badge>
             </IconButton>
