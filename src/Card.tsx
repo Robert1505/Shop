@@ -14,23 +14,58 @@ type Props = {
   name: string;
   price: number;
   image: string;
-  onFavoriteClick: () => void;
-  onAddToCartClick: () => void;
-  isFavourite: boolean;
+  onFavoriteClick?: () => void;
+  onAddToCartClick?: () => void;
+  isFavourite?: boolean;
 };
 
 export default function ProductCard(props: Props) {
   const [isFavourite, setIsFavourite] = useState(props.isFavourite);
+
+  const renderFavoriteIcon = () => {
+    return (
+      <IconButton
+        size="large"
+        onClick={() => {
+          if (props.onFavoriteClick) {
+            props.onFavoriteClick();
+          }
+          setIsFavourite(!isFavourite);
+        }}
+      >
+        <FavoriteIcon color={isFavourite ? "error" : "disabled"} />
+      </IconButton>
+    );
+  };
+
+  const renderCartIcon = () => {
+    return(
+      <Button
+          size="small"
+          sx={{
+            padding: "8px 16px",
+            color: "white",
+            background:
+              "rgb(83,144,217) linear-gradient(90deg, rgba(83,144,217,1) 0%, rgba(78,168,222,1) 50%, rgba(72,191,227,1) 100%)",
+            fontFamily: "Poppins",
+            fontWeight: 700,
+          }}
+          onClick={props.onAddToCartClick}
+        >
+          Add To Cart
+        </Button>
+    )
+  }
 
   return (
     <Card>
       <CardMedia
         component="img"
         height="210"
-        image= {props.image}
+        image={props.image}
         alt="random pic"
         sx={{
-          objectFit: "contain"
+          objectFit: "contain",
         }}
       />
       <CardContent
@@ -61,29 +96,8 @@ export default function ProductCard(props: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          sx={{
-            padding: "8px 16px",
-            color: "white",
-            background:
-              "rgb(83,144,217) linear-gradient(90deg, rgba(83,144,217,1) 0%, rgba(78,168,222,1) 50%, rgba(72,191,227,1) 100%)",
-            fontFamily: "Poppins",
-            fontWeight: 700,
-          }}
-          onClick={props.onAddToCartClick}
-        >
-          Add To Cart
-        </Button>
-        <IconButton
-          size="large"
-          onClick={() => {
-            props.onFavoriteClick();
-            setIsFavourite(!isFavourite);
-          }}
-        >
-          <FavoriteIcon color={isFavourite ? "error" : "disabled"} />
-        </IconButton>
+        {props.onAddToCartClick && renderCartIcon()}
+        {props.onFavoriteClick && renderFavoriteIcon()}
       </CardActions>
     </Card>
   );

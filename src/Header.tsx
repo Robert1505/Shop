@@ -52,6 +52,7 @@ export default function Header(props: Props) {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              onClick = {() => {navigate('/cart')}}
             >
               <Badge badgeContent={props.cartBadgeCount} color="error">
                 <ShoppingCartIcon />
