@@ -16,10 +16,11 @@ type Props = {
   image: string;
   onFavoriteClick: () => void;
   onAddToCartClick: () => void;
+  isFavourite: boolean;
 };
 
 export default function ProductCard(props: Props) {
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(props.isFavourite);
 
   return (
     <Card>

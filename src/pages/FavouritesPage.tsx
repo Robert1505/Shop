@@ -25,6 +25,7 @@ export default function FavouritesPage({
               name={product.name}
               price={product.price}
               image={product.image}
+              isFavourite = {true}
               onAddToCartClick={() => {
                 let copy = [...cartProducts];
                 copy.push(product);

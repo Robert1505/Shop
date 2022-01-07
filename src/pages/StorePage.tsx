@@ -75,6 +75,15 @@ export default function StorePage({
     setFilteredProducts(results);
   }, [keyword]);
 
+  const isProductAlreadyFavorite = (product: ProductInformation): boolean => {
+    const productIndex = favouriteProducts.findIndex(
+      (p) => p.name === product.name
+    )
+
+    // The product exists in the favorite list
+    return productIndex > -1;
+  }
+
   return (
     <>
       <div style={{ marginTop: 25 }}>
@@ -89,6 +98,7 @@ export default function StorePage({
         {filteredProducts.map((product: ProductInformation) => (
           <Grid key={`gridKey-${product.name}`} item xs={3}>
             <ProductCard
+              isFavourite = {isProductAlreadyFavorite(product)}
               name={product.name}
               price={product.price}
               image={product.image}
