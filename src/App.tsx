@@ -38,7 +38,17 @@ function App() {
             />
           }
         />
-        <Route path="/favourites" element={<FavouritesPage />} />
+        <Route
+          path="/favourites"
+          element={
+            <FavouritesPage
+              favouriteProducts={favouriteProducts}
+              setFavouriteProducts={setFavouriteProducts}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+          }
+        />
       </Routes>
     </div>
   );
