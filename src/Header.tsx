@@ -30,8 +30,9 @@ export default function Header(props: Props) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 2, display: { xs: "none", md: "flex" }, cursor: "pointer" }}
             fontFamily={"BakBak One"}
+            onClick = {() => {navigate('/')}}
           >
             ReactShop
           </Typography>
