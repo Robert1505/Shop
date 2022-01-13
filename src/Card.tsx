@@ -18,6 +18,7 @@ type Props = {
   onFavoriteClick?: () => void;
   onAddToCartClick?: () => void;
   isFavourite?: boolean;
+  quantity?: number;
 };
 
 export default function ProductCard(props: Props) {
@@ -114,7 +115,9 @@ export default function ProductCard(props: Props) {
       <CardActions>
         {!currentlyOnCartPage && renderCartIcon()}
         {!currentlyOnCartPage && renderFavoriteIcon()}
+        {currentlyOnCartPage && props.quantity}
         {currentlyOnCartPage && renderDeleteIcon()}
+
       </CardActions>
     </Card>
   );
