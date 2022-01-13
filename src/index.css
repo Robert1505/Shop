@@ -36,11 +36,11 @@ a:hover{
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
 }
 a:nth-child(1){
-    filter: hue-rotate(270deg);
-}
-/* a:nth-child(2){
     filter: hue-rotate(110deg);
-} */
+}
+ a:nth-child(3){
+    filter: hue-rotate(180deg);
+} 
 a span{
     position: absolute;
     display: block;
