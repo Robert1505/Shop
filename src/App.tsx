@@ -6,6 +6,7 @@ import { Grid, Input } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import StorePage from "./pages/StorePage";
 import FavouritesPage from "./pages/FavouritesPage";
+import CartPage from "./pages/CartPage";
 
 export type ProductInformation = {
   name: string;
@@ -14,9 +15,7 @@ export type ProductInformation = {
 };
 
 function App() {
-  const [favouriteProducts, setFavouriteProducts] = useState<
-    ProductInformation[]
-  >([]);
+  const [favouriteProducts, setFavouriteProducts] = useState<ProductInformation[]>([]);
 
   const [cartProducts, setCartProducts] = useState<ProductInformation[]>([]);
 
@@ -42,6 +41,17 @@ function App() {
           path="/favourites"
           element={
             <FavouritesPage
+              favouriteProducts={favouriteProducts}
+              setFavouriteProducts={setFavouriteProducts}
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <CartPage
               favouriteProducts={favouriteProducts}
               setFavouriteProducts={setFavouriteProducts}
               cartProducts={cartProducts}
