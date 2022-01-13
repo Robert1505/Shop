@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 
 interface Props {
     onClick: () => void;
+    numberOfProducts: number;
 }
 
 export default function ClearAllButton(props: Props): ReactElement {
@@ -11,7 +12,7 @@ export default function ClearAllButton(props: Props): ReactElement {
       <span></span>
       <span></span>
       <span></span>
-      Clear All()
+      Clear All({props.numberOfProducts})
     </a>
   );
 }

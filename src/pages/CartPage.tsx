@@ -26,13 +26,15 @@ export default function CartPage({
 }: Props): ReactElement {
 
   const [productGroups, setProductGroups] = useState<ProductGroup[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     let newProductGroups: ProductGroup[] = [];
+    let newTotalPrice = 0;
 
     // Iteram peste fiecare produs din cosul de cumparaturi
     cartProducts.forEach((product: ProductInformation) => {
-      
+      newTotalPrice += product.price;
       // Verificam daca exista deja o grupare pentru acest produs
       let groupIndex = newProductGroups.findIndex((group: ProductGroup) => group.product.name === product.name)
       if(groupIndex !== -1)
@@ -41,7 +43,7 @@ export default function CartPage({
         newProductGroups.push({ quantity: 1, product })
     });
 
-
+    setTotalPrice(newTotalPrice);
     setProductGroups(newProductGroups);
   }, [cartProducts]);
 
@@ -66,8 +68,8 @@ export default function CartPage({
           </Grid>
         ))}
       </Grid>
-      <CheckoutButton />
-      <ClearAllButton onClick = {() => setCartProducts([])}/>
+      <CheckoutButton totalPrice = {totalPrice} />
+      <ClearAllButton onClick = {() => setCartProducts([])} numberOfProducts = {cartProducts.length}/>
     </div>
   );
 }
