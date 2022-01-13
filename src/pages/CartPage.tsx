@@ -3,6 +3,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { ProductInformation } from "../App";
 import ProductCard from "../Card";
 import CheckoutButton from "../CheckoutButton";
+import ClearAllButton from "../ClearAllButton";
 import "../index.css";
 
 interface Props {
@@ -66,6 +67,7 @@ export default function CartPage({
         ))}
       </Grid>
       <CheckoutButton />
+      <ClearAllButton onClick = {() => setCartProducts([])}/>
     </div>
   );
 }
