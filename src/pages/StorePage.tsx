@@ -86,6 +86,7 @@ export default function StorePage({
 
                 setFavouriteProducts(copy);
               }}
+              
             />
           </Grid>
         ))}

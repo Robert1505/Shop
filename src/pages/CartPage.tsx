@@ -42,7 +42,9 @@ export default function CartPage({
 
 
     setProductGroups(newProductGroups);
-  }, []);
+  }, [cartProducts]);
+
+
 
   return (
     <div>
@@ -54,6 +56,11 @@ export default function CartPage({
               price={group.product.price}
               image={group.product.image}
               quantity={group.quantity}
+              onDeleteClick={() => {
+                let newCartProducts: ProductInformation[] = []
+                newCartProducts = cartProducts.filter(product => product.name !== group.product.name)
+                setCartProducts(newCartProducts);
+              }}
             />
           </Grid>
         ))}
