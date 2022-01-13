@@ -9,6 +9,7 @@ import { ProductInformation } from "./App";
 import { IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
+import ClearIcon from '@mui/icons-material/Clear';
 
 type Props = {
   name: string;
@@ -21,6 +22,8 @@ type Props = {
 
 export default function ProductCard(props: Props) {
   const [isFavourite, setIsFavourite] = useState(props.isFavourite);
+
+  const currentlyOnCartPage = props.onAddToCartClick === undefined;
 
   const renderFavoriteIcon = () => {
     return (
@@ -54,6 +57,19 @@ export default function ProductCard(props: Props) {
         >
           Add To Cart
         </Button>
+    )
+  }
+
+  const renderDeleteIcon = () => {
+    return(
+      <IconButton
+        size="large"
+        onClick={() => {
+          
+        }}
+      >
+        <ClearIcon />
+      </IconButton>
     )
   }
 
@@ -96,8 +112,9 @@ export default function ProductCard(props: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        {props.onAddToCartClick && renderCartIcon()}
-        {props.onFavoriteClick && renderFavoriteIcon()}
+        {!currentlyOnCartPage && renderCartIcon()}
+        {!currentlyOnCartPage && renderFavoriteIcon()}
+        {currentlyOnCartPage && renderDeleteIcon()}
       </CardActions>
     </Card>
   );

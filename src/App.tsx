@@ -15,9 +15,7 @@ export type ProductInformation = {
 };
 
 function App() {
-  const [favouriteProducts, setFavouriteProducts] = useState<
-    ProductInformation[]
-  >([]);
+  const [favouriteProducts, setFavouriteProducts] = useState<ProductInformation[]>([]);
 
   const [cartProducts, setCartProducts] = useState<ProductInformation[]>([]);
 

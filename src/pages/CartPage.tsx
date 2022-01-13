@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import React, { ReactElement } from "react";
 import { ProductInformation } from "../App";
 import ProductCard from "../Card";
+import "../index.css";
 
 interface Props {
   setFavouriteProducts: Function;
@@ -29,6 +30,13 @@ export default function CartPage({
           </Grid>
         ))}
       </Grid>
+      <a href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Checkout()
+      </a>
     </div>
   );
 }
