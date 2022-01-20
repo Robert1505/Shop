@@ -64,6 +64,7 @@ export default function CartPage({
                 newCartProducts = cartProducts.filter(product => product.name !== group.product.name)
                 setCartProducts(newCartProducts);
               }}
+              setCartProducts = {setCartProducts}
             />
           </Grid>
         ))}
