@@ -6,10 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { ProductInformation } from "./App";
-import { IconButton } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
 import ClearIcon from "@mui/icons-material/Clear";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 type Props = {
   name: string;
@@ -20,6 +22,7 @@ type Props = {
   onDeleteClick?: () => void;
   isFavourite?: boolean;
   quantity?: number;
+  setCartProducts?: Function; 
 };
 
 export default function ProductCard(props: Props) {
@@ -70,6 +73,41 @@ export default function ProductCard(props: Props) {
     );
   };
 
+  const renderQuantityButtons = () => {
+    return(
+      <div className="quantityBTNS">
+        <IconButton size="small" onClick={() => {
+          if(props.quantity !== undefined) {
+            let newProduct: ProductInformation = {
+              name: props.name,
+              price: props.price,
+              image: props.image
+            } 
+
+            props.setCartProducts?.((oldProducts: ProductInformation[]) => [...oldProducts, newProduct]);
+            
+          }
+        }}>
+          <ArrowDropUpIcon />
+        </IconButton>
+        <IconButton size="small" onClick={() => {
+          if(props.quantity) {
+            props.setCartProducts?.((oldProducts: ProductInformation[]) => {
+              let newProducts = [...oldProducts];
+              let productIndex = newProducts.findIndex((product: ProductInformation) => product.name === props.name);
+              if(productIndex !== -1){
+                newProducts.splice(productIndex, 1);
+              }
+              return newProducts;
+            });
+          }
+        }}>
+          <ArrowDropDownIcon />
+        </IconButton>
+      </div>
+    )
+  };
+
   return (
     <Card>
       <CardMedia
@@ -112,6 +150,7 @@ export default function ProductCard(props: Props) {
         {!currentlyOnCartPage && renderCartIcon()}
         {!currentlyOnCartPage && renderFavoriteIcon()}
         {currentlyOnCartPage && props.quantity}
+        {currentlyOnCartPage && renderQuantityButtons()}
         {currentlyOnCartPage && renderDeleteIcon()}
       </CardActions>
     </Card>
